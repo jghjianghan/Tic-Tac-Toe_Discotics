@@ -5,7 +5,7 @@
 Program ada di folder Discotics, diimplementasikan dengan java menggunakan IDE Netbeans.
 
 ### States
-Game tree ada di https://www.geogebra.org/geometry/m2a3qhz7. Vertex adalah state, edge adalah pasangan move pada tic tac toe.
+Game tree ada di https://www.geogebra.org/m/m2a3qhz7. Vertex adalah state, edge adalah pasangan move pada tic tac toe.
 
 Kode<br>
 |1|2|3|<br>
