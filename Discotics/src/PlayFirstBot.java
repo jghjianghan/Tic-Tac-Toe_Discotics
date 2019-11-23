@@ -70,7 +70,7 @@ public class PlayFirstBot {
                         break;
                     case 8:
                         output = 3;
-                        currState = State1.S1;
+                        currState = State1.S2;
                         break;
                 }
                 break;
