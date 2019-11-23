@@ -186,9 +186,9 @@ public class TicTacToe extends JPanel {
             }
         }
         if (completed == false) {
-            System.out.print("keep playing");
+            System.out.println("keep playing");
         } else if (completed == true) {
-            System.out.print("its a draw");
+            System.out.println("its a draw");
         }
         return completed;
     }
@@ -208,7 +208,7 @@ public class TicTacToe extends JPanel {
             }
         }
 
-        //check hotizontal
+        //check horizontal
         for (int i = 0; i < board.length; i++) {
             int a = board[0][i];
             int b = board[1][i];
@@ -261,11 +261,13 @@ public class TicTacToe extends JPanel {
                 //get x and y mouse positon
                 int a = event.getX();
                 int b = event.getY();
-
+                boolean isOutOfBounds = false;
                 if ((a < 500) || (b < 200)) {   //out of bounds
                     repaint();
+                    isOutOfBounds = true;
                 } else if ((a > 780) || (b > 510)) { //out of bounds
                     repaint();
+                    isOutOfBounds = true;
                 } else {
                     if (a > 500 && a < 580) {
                         x = 0;
@@ -283,6 +285,7 @@ public class TicTacToe extends JPanel {
                     }
                     if (board[x][y] == 1 || board[x][y] == 2) {  //space filled - must play somewhere else
                         repaint();
+                        isOutOfBounds = true;
                     } else {
                         if (player1 == true) { //x turn - draw an X
                             board[x][y] = 1;
@@ -292,23 +295,25 @@ public class TicTacToe extends JPanel {
                         }
                     }
                 }
-                //anounce winner
+                //announce winner
                 System.out.println(checkwin());
                 if (checkwin() == 1) {
-
                     player1wins++;
                 } else if (checkwin() == 2) {
                     player2wins++;
                 } else if (checkDraw() == true) {
                     //do nothing
-                } else //switch whos turn it is
-                if (player1 == true) {
-                    turn.setText("Player 2'S TURN");
-                    player1 = !player1;
-                } else {
-                    turn.setText("Player 1'S TURN");
-                    player1 = !player1;
+                } else if (!isOutOfBounds) //change turn of if mouse is clicked in a legal position
+                {
+                    if (player1 == true) { //switch whos turn it is
+                        turn.setText("Player 2'S TURN");
+                        player1 = !player1;
+                    } else {
+                        turn.setText("Player 1'S TURN");
+                        player1 = !player1;
+                    }
                 }
+                
                 //update the game
                 repaint();
             }
