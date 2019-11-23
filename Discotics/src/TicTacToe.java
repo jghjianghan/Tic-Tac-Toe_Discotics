@@ -40,7 +40,7 @@ public class TicTacToe extends JPanel {
     Color green = new Color(12, 171, 7);
 
     public TicTacToe() {
-        setBackground(grey);
+        setBackground(white);
         setPreferredSize(new Dimension(1300, 650));
 
         player1 = false;
@@ -104,7 +104,7 @@ public class TicTacToe extends JPanel {
             for (int y = 0; y < board.length; y++) {
                 if (board[x][y] == 1) {   // "1" represents x 
                     //draw X - using drawPolygon()
-                    page.setColor(Color.black);
+                    page.setColor(Color.red);
                     int[] m = {xpos + 20 + 100 * x, xpos + 30 + 100 * x, xpos + 50 + 100 * x, xpos + 70 + 100 * x, xpos + 80 + 100 * x,
                         xpos + 60 + 100 * x, xpos + 80 + 100 * x, xpos + 70 + 100 * x, xpos + 50 + 100 * x, xpos + 30 + 100 * x, xpos + 20 + 100 * x,
                         xpos + 40 + 100 * x,};
@@ -116,11 +116,11 @@ public class TicTacToe extends JPanel {
                 } else if (board[x][y] == 2) {   // "2" represents o 
 
                     //draw O - using drawOval()
-                    page.setColor(Color.black);
+                    page.setColor(Color.green);
                     page.fillOval(xpos + 20 + 100 * x, 240 + 100 * y, 60, 50);
-                    page.setColor(grey);
+                    page.setColor(white);
                     page.fillOval(xpos + 25 + 100 * x, 243 + 100 * y, 50, 40);
-                    page.setColor(Color.black);
+                    page.setColor(Color.green);
                     page.drawOval(xpos + 25 + 100 * x, 243 + 100 * y, 50, 40);
                 }
             }
@@ -153,14 +153,15 @@ public class TicTacToe extends JPanel {
         y = 0;
         xpos = 900;
         ypos = 315;
-        page.setColor(Color.black);
+        page.setColor(Color.green);
         page.fillOval(xpos + 20 + 100 * x, ypos - 3 + 100 * y, 60, 50);
-        page.setColor(grey);
+        page.setColor(white);
         page.fillOval(xpos + 25 + 100 * x, ypos + 100 * y, 50, 40);
-        page.setColor(Color.black);
+        page.setColor(Color.green);
         page.drawOval(xpos + 25 + 100 * x, ypos + 100 * y, 50, 40);
 
         //draws X
+        page.setColor(Color.red);
         x = 0;
         y = 0;
         xpos = 300;
