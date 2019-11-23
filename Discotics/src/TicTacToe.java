@@ -32,6 +32,10 @@ public class TicTacToe extends JPanel {
     //Colors
     Color grey = new Color(192, 192, 192);
     Color black = new Color(0, 0, 0);
+    Color white = new Color(255,255,255);
+    Color red = new Color(163,0,0);
+    Color green = new Color(12, 171, 7);
+    
     public TicTacToe() {
         setBackground(grey);
         setPreferredSize(new Dimension(1300, 650));
