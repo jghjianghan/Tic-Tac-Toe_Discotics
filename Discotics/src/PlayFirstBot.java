@@ -22,8 +22,11 @@ public class PlayFirstBot {
     private State1 currState;
 
     public PlayFirstBot() {
+        this.reset();
+    }
+    
+    public void reset (){
         currState = State1.S0;
-        System.out.println(State1.S0);
     }
 
     public Coordinate getFirstOutput() {

@@ -8,18 +8,21 @@
  *
  * @author VRABS
  */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.Graphics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TicTacToe extends JPanel {
+
     boolean player1;
     int winner = -1;
     int[][] board = new int[3][3];
     int x;
     int y;
+    PlayFirstBot bot;
 
     //Win counter
     int player1wins = 0, player2wins = 0;
@@ -32,15 +35,15 @@ public class TicTacToe extends JPanel {
     //Colors
     Color grey = new Color(192, 192, 192);
     Color black = new Color(0, 0, 0);
-    Color white = new Color(255,255,255);
-    Color red = new Color(163,0,0);
+    Color white = new Color(255, 255, 255);
+    Color red = new Color(163, 0, 0);
     Color green = new Color(12, 171, 7);
-    
+
     public TicTacToe() {
         setBackground(grey);
         setPreferredSize(new Dimension(1300, 650));
 
-        player1 = true;
+        player1 = false;
         player1wins = 0;
         player2wins = 0;
 
@@ -58,13 +61,22 @@ public class TicTacToe extends JPanel {
                 repaint();
             }
         });
+
+        bot = new PlayFirstBot();
+        this.fillBoardByBot(bot.getFirstOutput());
+        //System.out.println(bot.getFirstOutput());
+    }
+
+    //
+    public void fillBoardByBot(Coordinate coor) {
+        board[coor.getKolom()][coor.getBaris()] = 1;
     }
 
     //paintComponent - this does the drawing and graphics
     public void paintComponent(Graphics page) {
 
         super.paintComponent(page); //must have this line for the panel to update/call itself
-         //useful variables to scale and reposition the game
+        //useful variables to scale and reposition the game
         int i = 5;
         int j = 5;
         int width = 5;
@@ -172,7 +184,8 @@ public class TicTacToe extends JPanel {
             }
         }
         winner = -1;
-        player1 = true;
+        player1 = false;
+        this.fillBoardByBot(bot.getFirstOutput());
     }
 
     //checkdraw
@@ -255,7 +268,7 @@ public class TicTacToe extends JPanel {
         //main mouse event
         public void mouseClicked(MouseEvent event) {
             if (checkwin() > 0) {
-                
+
             } else {
 
                 //get x and y mouse positon
@@ -313,8 +326,28 @@ public class TicTacToe extends JPanel {
                         player1 = !player1;
                     }
                 }
-                
+
                 //update the game
+                repaint();
+                
+                //adds delay to make an impression that the bot is thinking
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(TicTacToe.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                
+                //Bot reacts to user's input
+                
+                fillBoardByBot(bot.getOutput(new Coordinate(y, x)));
+                turn.setText("Player 2'S TURN");
+                player1 = false;
+                System.out.println(checkwin());
+                if (checkwin() == 1) {
+                    player1wins++;
+                } else if (checkwin() == 2) {
+                    player2wins++;
+                }
                 repaint();
             }
         }
