@@ -325,29 +325,26 @@ public class TicTacToe extends JPanel {
                         turn.setText("Player 1'S TURN");
                         player1 = !player1;
                     }
-                }
 
-                //update the game
-                repaint();
-                
-                //adds delay to make an impression that the bot is thinking
+                    //adds delay to make an impression that the bot is thinking
 //                try {
 //                    Thread.sleep(1000);
 //                } catch (InterruptedException ex) {
 //                    Logger.getLogger(TicTacToe.class.getName()).log(Level.SEVERE, null, ex);
 //                }
-                
-                //Bot reacts to user's input
-                
-                fillBoardByBot(bot.getOutput(new Coordinate(y, x)));
-                turn.setText("Player 2'S TURN");
-                player1 = false;
-                System.out.println(checkwin());
-                if (checkwin() == 1) {
-                    player1wins++;
-                } else if (checkwin() == 2) {
-                    player2wins++;
+                    //Bot reacts to user's input
+                    fillBoardByBot(bot.getOutput(new Coordinate(y, x)));
+                    turn.setText("Player 2'S TURN");
+                    player1 = false;
+                    System.out.println(checkwin());
+                    if (checkwin() == 1) {
+                        player1wins++;
+                    } else if (checkwin() == 2) {
+                        player2wins++;
+                    }
                 }
+
+                //update the game
                 repaint();
             }
         }
