@@ -277,27 +277,38 @@ public class TicTacToe extends JPanel {
                 int a = event.getX();
                 int b = event.getY();
                 boolean isOutOfBounds = false;
-                if ((a < 500) || (b < 200)) {   //out of bounds
-                    repaint();
-                    isOutOfBounds = true;
-                } else if ((a > 780) || (b > 510)) { //out of bounds
-                    repaint();
-                    isOutOfBounds = true;
+                if (a > 490 && a < 590 && b > 225 && b < 320) {
+                    x = 0;
+                    y = 0;
+                } else if (a > 490 && a < 590 && b > 325 && b < 420) {
+                    x = 0;
+                    y = 1;
+                } else if (a > 490 && a < 590 && b > 425 && b < 520) {
+                    x = 0;
+                    y = 2;
+                } else if (a > 595 && a < 690 && b > 225 && b < 320) {
+                    x = 1;
+                    y = 0;
+                } else if (a > 595 && a < 690 && b > 325 && b < 420) {
+                    x = 1;
+                    y = 1;
+                } else if (a > 595 && a < 690 && b > 425 && b < 520) {
+                    x = 1;
+                    y = 2;
+                } else if (a > 695 && a < 790 && b > 225 && b < 320) {
+                    x = 2;
+                    y = 0;
+                } else if (a > 695 && a < 790 && b > 325 && b < 420) {
+                    x = 2;
+                    y = 1;
+                } else if (a > 695 && a < 790 && b > 425 && b < 520) {
+                    x = 2;
+                    y = 2;
                 } else {
-                    if (a > 500 && a < 580) {
-                        x = 0;
-                    } else if (a > 600 && a < 680) {
-                        x = 1;
-                    } else if (a > 700 && a < 780) {
-                        x = 2;
-                    }
-                    if (b > 225 && b < 310) {
-                        y = 0;
-                    } else if (b > 325 && b < 410) {
-                        y = 1;
-                    } else if (b > 425 && b < 510) {
-                        y = 2;
-                    }
+                    repaint();
+                    isOutOfBounds = true;
+                }
+                if (!isOutOfBounds) {
                     if (board[x][y] == 1 || board[x][y] == 2) {  //space filled - must play somewhere else
                         repaint();
                         isOutOfBounds = true;
