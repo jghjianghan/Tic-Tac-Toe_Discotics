@@ -39,6 +39,10 @@ public class PlaySecondBot {
     public PlaySecondBot() {
         this.reset();
     }
+    
+    public void sayHello (){
+        System.out.println("Hello I'm the second bot!");
+    }
 
     public void reset() {
         currState = State1.S0;

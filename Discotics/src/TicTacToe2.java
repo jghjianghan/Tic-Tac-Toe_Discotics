@@ -54,6 +54,8 @@ public class TicTacToe2 extends JPanel {
         addMouseListener(new XOListener());
         add(playAgainButton);
 
+        bot = new PlaySecondBot();
+        
         //this button starts the game over
         playAgainButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -61,13 +63,11 @@ public class TicTacToe2 extends JPanel {
                 repaint();
             }
         });
-
-        bot = new PlaySecondBot();
     }
 
     //
     public void fillBoardByBot(Coordinate coor) {
-        board[coor.getKolom()][coor.getBaris()] = 1;
+        board[coor.getKolom()][coor.getBaris()] = 2;
     }
 
     //paintComponent - this does the drawing and graphics
@@ -184,6 +184,7 @@ public class TicTacToe2 extends JPanel {
         }
         winner = -1;
         player1 = true;
+        this.bot.reset();
     }
 
     //checkdraw
@@ -333,7 +334,7 @@ public class TicTacToe2 extends JPanel {
                     //Bot reacts to user's input
                     fillBoardByBot(bot.getOutput(new Coordinate(y, x)));
                     turn.setText("Player 2'S TURN");
-                    player1 = false;
+                    player1 = true;
                     System.out.println(checkwin());
                     if (checkwin() == 1) {
                         player1wins++;
@@ -349,12 +350,11 @@ public class TicTacToe2 extends JPanel {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World");
-        JFrame frame = new JFrame("TicTacToe");
+        JFrame frame = new JFrame("TicTacToe Play First");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(1300, 660));
 //    frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.getContentPane().add(new TicTacToe());
+        frame.getContentPane().add(new TicTacToe2());
         frame.pack();
         frame.setVisible(true);
 
