@@ -186,6 +186,7 @@ public class TicTacToe extends JPanel {
         }
         winner = -1;
         player1 = false;
+        
         this.fillBoardByBot(bot.getFirstOutput());
     }
 
@@ -353,7 +354,7 @@ public class TicTacToe extends JPanel {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("TicTacToe");
+        JFrame frame = new JFrame("TicTacToe Play Second");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(1300, 660));
 //    frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
